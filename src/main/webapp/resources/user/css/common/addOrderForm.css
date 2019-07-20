@@ -1,0 +1,104 @@
+@charset "utf-8";
+
+/*顶部*/
+.car-top {
+    background: rgb(246,246,246);
+    text-align: center;
+    padding: 10px 0;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 60px;
+}
+
+/*身体部分*/
+table {
+
+}
+.or-su-body .container table th {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 2px;
+    padding-right: 2px;
+
+}
+.or-su-body .container table td {
+
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 2px;
+    padding-right: 2px;
+
+}
+table th {
+    font-size: 14px;
+}
+table td {
+    font-size: 14px;
+}
+.th1 {
+    width: 23%;
+}
+.th2 {
+    width: 17%;
+}
+.th3 {
+    width: 30%;
+}
+
+.th4 {
+    width: 30%;
+}
+
+@media (min-width: 450px) {
+    table th {
+        font-size: 18px;
+    }
+    table td {
+        font-size: 18px;
+    }
+
+}
+
+/*小屏幕（平板，大于等于768px）*/
+@media (min-width: 768px) {
+    .th0 {
+        width: 5%;
+    }
+    .th1 {
+        width: 23%;
+    }
+    .th2 {
+        width: 17%;
+    }
+    .th3 {
+        width: 27%;
+    }
+
+    .th4 {
+        width: 27%;
+    }
+    table th {
+        font-size: 20px;
+    }
+    table td {
+        font-size: 20px;
+    }
+
+}
+
+/*中等屏幕（桌面显示器，大于等于992px）*/
+@media (min-width: 992px ) {
+    table th {
+        font-size: 20px;
+    }
+    table td {
+        font-size: 20px;
+    }
+
+}
+
+/*大屏幕（大桌面显示器，大于等于1200px）*/
+@media (min-width: 1200px){
+
+
+}

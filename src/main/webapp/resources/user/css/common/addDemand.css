@@ -1,0 +1,153 @@
+@charset "utf-8";
+
+/*身体*/
+.register .small-jumbotron {
+    width: 90%;
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+.register {
+    margin-top: -20px;
+    background: url(../../images/register-background.jpg) no-repeat;
+    background-size: 100% 220%;
+}
+/*发布需求*/
+.register .register-p {
+    margin-left: 6%;
+    font-size: 30px;
+    font-family: "华文彩云", serif;
+    color: #F36D00;
+}
+/*输入框字体*/
+.lab {
+    font-size: 16px;
+    margin-top: 3px;
+    text-align: right;
+
+}
+/*输入框内字体*/
+.re-col {
+    width: 100%;
+    margin-top: 10px;
+    font-size: 15px;
+    padding: 10px 10px;
+}
+/*下拉框*/
+.re-sel {
+    font-size: 15px;
+    height: 40px;
+    margin-top: 10px;
+}
+
+/**/
+#re-div {
+    width: 80%;
+    margin:10px auto;
+    padding-top: 20px;
+}
+/*按钮*/
+.register-btn {
+    width: 100%;
+    font-size: 20px;
+}
+
+
+/*小屏幕（平板，大于等于768px）*/
+@media (min-width: 768px) {
+    /*身体*/
+    .register .small-jumbotron {
+        width: 70%;
+    }
+    /*发布需求*/
+    .register .register-p {
+        margin-left: 15%;
+        font-size: 35px;
+    }
+    /*输入框内字体*/
+    .re-col {
+        width: 100%;
+        font-size: 20px;
+    }
+    /*输入框字体*/
+    .lab {
+        font-size: 20px;
+        margin-top: 3px;
+    }
+    /*下拉框*/
+    .re-sel {
+        font-size: 20px;
+    }
+    /*按钮*/
+    .register-btn {
+        width: 100%;
+        font-size: 23px;
+    }
+}
+
+/*中等屏幕（桌面显示器，大于等于992px）*/
+@media (min-width: 992px ) {
+    /*身体*/
+    .register .small-jumbotron {
+        width: 55%;
+    }
+    /*发布需求*/
+    .register .register-p {
+        margin-left: 22%;
+        font-size: 38px;
+    }
+    /*输入框内字体*/
+    .re-col {
+        width: 100%;
+        font-size: 20px;
+    }
+    /*输入框字体*/
+    .lab {
+        font-size: 22px;
+        margin-top: 3px;
+    }
+
+    /*下拉框*/
+    .re-sel {
+        font-size: 20px;
+    }
+    /*按钮*/
+    .register-btn {
+        width: 100%;
+        font-size: 23px;
+    }
+
+}
+
+/*大屏幕（大桌面显示器，大于等于1200px）*/
+@media (min-width: 1200px){
+    /*身体*/
+    .register .small-jumbotron {
+        width: 50%;
+    }
+    /*发布需求*/
+    .register .register-p {
+        margin-left: 25%;
+        font-size: 40px;
+    }
+    /*输入框内字体*/
+    .re-col {
+        width: 100%;
+        font-size: 20px;
+    }
+    /*输入框字体*/
+    .lab {
+        font-size: 25px;
+        margin-top: 3px;
+    }
+    /*下拉框*/
+    .re-sel {
+        font-size: 20px;
+    }
+    /*按钮*/
+    .register-btn {
+        width: 100%;
+        font-size: 23px;
+    }
+
+}

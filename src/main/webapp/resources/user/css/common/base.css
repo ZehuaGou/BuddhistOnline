@@ -1,0 +1,205 @@
+@charset "utf-8";
+/*顶部栏*/
+
+#myCarousel {
+    margin-top: -20px;
+}
+
+/*顶部字体*/
+.nav-top {
+    padding: 10px;
+}
+
+nav .container .top-word {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+nav .container .top-word2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/*轮播图*/
+#myCarousel img {
+    margin: auto;
+}
+
+/*顶部栏结束*/
+
+/*底部导航栏*/
+div.navbar .row {
+    margin: 0;
+    padding: 0;
+}
+
+.bottom-nav {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.bottom-nav span {
+    font-size: 15px;
+}
+
+.bottom-nav p {
+    font-size: 15px;
+    color: #666;
+}
+
+.bottom-nav-one span, .bottom-nav-one p {
+    color: green;
+}
+
+/*底部导航栏结束*/
+
+/*翻页按钮*/
+.ann {
+    text-align: center;
+
+}
+
+.ann-btn {
+    margin: 0;
+}
+
+/*小屏幕（平板，大于等于768px）*/
+@media (min-width: 768px) {
+    /*顶部字体*/
+    .nav-top {
+        padding: 10px;
+    }
+
+    nav .container .top-word {
+        font-size: 35px;
+        font-weight: 600;
+    }
+
+    nav .container .top-word2 {
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+    /*底部导航栏*/
+    div.navbar .row {
+        margin: 0;
+        padding: 0;
+    }
+
+    .bottom-nav {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .bottom-nav span {
+        font-size: 20px;
+    }
+
+    .bottom-nav p {
+        font-size: 20px;
+        color: #666;
+    }
+
+    .bottom-nav-one span, .bottom-nav-one p {
+        color: green;
+    }
+
+    /*按钮*/
+    .ann-btn {
+        margin: 10px 20px;
+    }
+}
+
+/*中等屏幕（桌面显示器，大于等于992px）*/
+@media (min-width: 992px ) {
+    /*顶部字体*/
+    .nav-top {
+        padding: 10px;
+    }
+
+    nav .container .top-word {
+        font-size: 35px;
+        font-weight: 600;
+    }
+
+    nav .container .top-word2 {
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+    /*底部导航栏*/
+    div.navbar .row {
+        margin: 0;
+        padding: 0;
+    }
+
+    .bottom-nav {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .bottom-nav span {
+        font-size: 20px;
+    }
+
+    .bottom-nav p {
+        font-size: 20px;
+        color: #666;
+    }
+
+    .bottom-nav-one span, .bottom-nav-one p {
+        color: green;
+    }
+
+    /*按钮*/
+    .ann-btn {
+        margin: 10px 25px;
+    }
+}
+
+/*大屏幕（大桌面显示器，大于等于1200px）*/
+@media only (min-width: 1200px) {
+    /*顶部字体*/
+    .nav-top {
+        padding: 10px;
+    }
+
+    nav .container .top-word {
+        font-size: 40px;
+        font-weight: 600;
+    }
+
+    nav .container .top-word2 {
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    /*底部导航栏*/
+    div.navbar .row {
+        margin: 0;
+        padding: 0;
+    }
+
+    .bottom-nav {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .bottom-nav span {
+        font-size: 30px;
+    }
+
+    .bottom-nav p {
+        font-size: 30px;
+        color: #666;
+    }
+
+    .bottom-nav-one span, .bottom-nav-one p {
+        color: green;
+    }
+
+    /*按钮*/
+    .ann-btn {
+        margin: 20px 40px;
+    }
+}

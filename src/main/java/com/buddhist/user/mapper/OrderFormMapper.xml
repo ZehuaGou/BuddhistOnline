@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.buddhist.user.mapper.OrderFormMapper">
+  <resultMap id="BaseResultMap" type="com.buddhist.user.model.OrderForm">
+    <id column="oid" jdbcType="INTEGER" property="oid"/>
+    <result column="sid" jdbcType="INTEGER" property="sid"/>
+    <result column="xid" jdbcType="INTEGER" property="xid"/>
+    <result column="did" jdbcType="INTEGER" property="did"/>
+    <result column="answer_one" jdbcType="VARCHAR" property="answerOne"/>
+    <result column="answer_two" jdbcType="VARCHAR" property="answerTwo"/>
+    <result column="require" jdbcType="VARCHAR" property="require"/>
+    <result column="play_url" jdbcType="VARCHAR" property="playUrl"/>
+    <result column="finish" jdbcType="VARCHAR" property="finish"/>
+    <result column="grade" jdbcType="INTEGER" property="grade"/>
+    <result column="evaluate" jdbcType="VARCHAR" property="evaluate"/>
+    <result column="message" jdbcType="VARCHAR" property="message"/>
+    <result column="flag" jdbcType="VARCHAR" property="flag"/>
+  </resultMap>
+
+  <!--订单信息关于佛事内容信息，清单信息，施主信息，修士信息进行查询-->
+  <resultMap id="Cascade" type="com.buddhist.user.model.OrderForm" extends="BaseResultMap">
+    <!--订单关联施主信息-->
+    <association property="donorUser" javaType="com.buddhist.user.model.User">
+      <result column="du_name" jdbcType="VARCHAR" property="name"/>
+      <result column="du_password" jdbcType="VARCHAR" property="password"/>
+      <result column="du_phone" jdbcType="VARCHAR" property="phone"/>
+      <result column="du_sex" jdbcType="VARCHAR" property="sex"/>
+      <result column="du_id_card" jdbcType="VARCHAR" property="idCard"/>
+      <result column="du_r_time" jdbcType="TIMESTAMP" property="rTime"/>
+      <result column="du_identify" jdbcType="VARCHAR" property="identify"/>
+      <result column="du_accept_ords" jdbcType="INTEGER" property="acceptOrds"/>
+      <result column="du_grade" jdbcType="INTEGER" property="grade"/>
+      <result column="du_accept_money" jdbcType="DECIMAL" property="acceptMoney"/>
+      <result column="du_donation_ords" jdbcType="INTEGER" property="donationOrds"/>
+      <result column="du_donation_money" jdbcType="DECIMAL" property="donationMoney"/>
+      <result column="du_flag" jdbcType="VARCHAR" property="flag"/>
+    </association>
+
+    <!--订单关联修士信息-->
+    <association property="monkUser" javaType="com.buddhist.user.model.User">
+      <result column="mu_name" jdbcType="VARCHAR" property="name"/>
+      <result column="mu_password" jdbcType="VARCHAR" property="password"/>
+      <result column="mu_phone" jdbcType="VARCHAR" property="phone"/>
+      <result column="mu_sex" jdbcType="VARCHAR" property="sex"/>
+      <result column="mu_id_card" jdbcType="VARCHAR" property="idCard"/>
+      <result column="mu_r_time" jdbcType="TIMESTAMP" property="rTime"/>
+      <result column="mu_identify" jdbcType="VARCHAR" property="identify"/>
+      <result column="mu_accept_ords" jdbcType="INTEGER" property="acceptOrds"/>
+      <result column="mu_grade" jdbcType="INTEGER" property="grade"/>
+      <result column="mu_accept_money" jdbcType="DECIMAL" property="acceptMoney"/>
+      <result column="mu_donation_ords" jdbcType="INTEGER" property="donationOrds"/>
+      <result column="mu_donation_money" jdbcType="DECIMAL" property="donationMoney"/>
+      <result column="mu_flag" jdbcType="VARCHAR" property="flag"/>
+    </association>
+
+    <!--佛事具体内容关联清单信息-->
+    <association property="inventory" javaType="com.buddhist.user.model.Inventory">
+      <result column="i_uid" jdbcType="INTEGER" property="uid"/>
+      <result column="i_did" jdbcType="INTEGER" property="did"/>
+      <result column="i_content" jdbcType="VARCHAR" property="content"/>
+      <result column="i_assign" jdbcType="VARCHAR" property="assign"/>
+      <result column="i_place" jdbcType="VARCHAR" property="place"/>
+      <result column="i_early_time" jdbcType="TIMESTAMP" property="earlyTime"/>
+      <result column="i_late_time" jdbcType="TIMESTAMP" property="lateTime"/>
+      <result column="i_receive" jdbcType="VARCHAR" property="receive"/>
+      <result column="i_publish_time" jdbcType="TIMESTAMP" property="publishTime"/>
+      <result column="i_receive_time" jdbcType="TIMESTAMP" property="receiveTime"/>
+      <result column="i_confirm_time" jdbcType="TIMESTAMP" property="confirmTime"/>
+      <result column="i_flag" jdbcType="VARCHAR" property="flag"/>
+
+      <!--订单关联佛事内容信息-->
+      <association property="designation" javaType="com.buddhist.user.model.Designation">
+        <result column="d_cid" jdbcType="INTEGER" property="cid"/>
+        <result column="d_name" jdbcType="VARCHAR" property="name"/>
+        <result column="d_content" jdbcType="VARCHAR" property="content"/>
+        <result column="d_price" jdbcType="DECIMAL" property="price"/>
+        <result column="d_flag" jdbcType="VARCHAR" property="flag"/>
+      </association>
+    </association>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    oid, sid, xid, did, answer_one, answer_two, `require`, play_url, finish, grade, evaluate,
+    message, flag
+  </sql>
+  <select id="selectByExample" parameterType="com.buddhist.user.model.OrderFormExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List"/>
+    from order_form
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from order_form
+    where oid = #{oid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_form
+    where oid = #{oid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.buddhist.user.model.OrderFormExample">
+    delete from order_form
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.buddhist.user.model.OrderForm" useGeneratedKeys="true" keyProperty="oid">
+    insert into order_form (oid, sid, xid,
+                            did, answer_one, answer_two,
+                            `require`, play_url, finish,
+                            grade, evaluate, message,
+                            flag)
+    values (#{oid,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER}, #{xid,jdbcType=INTEGER},
+                                     #{did,jdbcType=INTEGER}, #{answerOne,jdbcType=VARCHAR},
+                                     #{answerTwo,jdbcType=VARCHAR},
+                                     #{require,jdbcType=VARCHAR}, #{playUrl,jdbcType=VARCHAR},
+                                     #{finish,jdbcType=VARCHAR},
+                                     #{grade,jdbcType=INTEGER}, #{evaluate,jdbcType=VARCHAR},
+            #{message,jdbcType=VARCHAR},
+            #{flag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.buddhist.user.model.OrderForm">
+    insert into order_form
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oid != null">
+        oid,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="xid != null">
+        xid,
+      </if>
+      <if test="did != null">
+        did,
+      </if>
+      <if test="answerOne != null">
+        answer_one,
+      </if>
+      <if test="answerTwo != null">
+        answer_two,
+      </if>
+      <if test="require != null">
+        `require`,
+      </if>
+      <if test="playUrl != null">
+        play_url,
+      </if>
+      <if test="finish != null">
+        finish,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="evaluate != null">
+        evaluate,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oid != null">
+        #{oid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="xid != null">
+        #{xid,jdbcType=INTEGER},
+      </if>
+      <if test="did != null">
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="answerOne != null">
+        #{answerOne,jdbcType=VARCHAR},
+      </if>
+      <if test="answerTwo != null">
+        #{answerTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="require != null">
+        #{require,jdbcType=VARCHAR},
+      </if>
+      <if test="playUrl != null">
+        #{playUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="finish != null">
+        #{finish,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="evaluate != null">
+        #{evaluate,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.buddhist.user.model.OrderFormExample" resultType="java.lang.Long">
+    select count(*) from order_form
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update order_form
+    <set>
+      <if test="record.oid != null">
+        oid = #{record.oid,jdbcType=INTEGER},
+      </if>
+      <if test="record.sid != null">
+        sid = #{record.sid,jdbcType=INTEGER},
+      </if>
+      <if test="record.xid != null">
+        xid = #{record.xid,jdbcType=INTEGER},
+      </if>
+      <if test="record.did != null">
+        did = #{record.did,jdbcType=INTEGER},
+      </if>
+      <if test="record.answerOne != null">
+        answer_one = #{record.answerOne,jdbcType=VARCHAR},
+      </if>
+      <if test="record.answerTwo != null">
+        answer_two = #{record.answerTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.require != null">
+        `require` = #{record.require,jdbcType=VARCHAR},
+      </if>
+      <if test="record.playUrl != null">
+        play_url = #{record.playUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.finish != null">
+        finish = #{record.finish,jdbcType=VARCHAR},
+      </if>
+      <if test="record.grade != null">
+        grade = #{record.grade,jdbcType=INTEGER},
+      </if>
+      <if test="record.evaluate != null">
+        evaluate = #{record.evaluate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+      <if test="record.flag != null">
+        flag = #{record.flag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update order_form
+    set oid = #{record.oid,jdbcType=INTEGER},
+    sid = #{record.sid,jdbcType=INTEGER},
+    xid = #{record.xid,jdbcType=INTEGER},
+    did = #{record.did,jdbcType=INTEGER},
+    answer_one = #{record.answerOne,jdbcType=VARCHAR},
+    answer_two = #{record.answerTwo,jdbcType=VARCHAR},
+    `require` = #{record.require,jdbcType=VARCHAR},
+    play_url = #{record.playUrl,jdbcType=VARCHAR},
+    finish = #{record.finish,jdbcType=VARCHAR},
+    grade = #{record.grade,jdbcType=INTEGER},
+    evaluate = #{record.evaluate,jdbcType=VARCHAR},
+    message = #{record.message,jdbcType=VARCHAR},
+    flag = #{record.flag,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.buddhist.user.model.OrderForm">
+    update order_form
+    <set>
+      <if test="sid != null">
+        sid = #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="xid != null">
+        xid = #{xid,jdbcType=INTEGER},
+      </if>
+      <if test="did != null">
+        did = #{did,jdbcType=INTEGER},
+      </if>
+      <if test="answerOne != null">
+        answer_one = #{answerOne,jdbcType=VARCHAR},
+      </if>
+      <if test="answerTwo != null">
+        answer_two = #{answerTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="require != null">
+        `require` = #{require,jdbcType=VARCHAR},
+      </if>
+      <if test="playUrl != null">
+        play_url = #{playUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="finish != null">
+        finish = #{finish,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="evaluate != null">
+        evaluate = #{evaluate,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where oid = #{oid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.buddhist.user.model.OrderForm">
+    update order_form
+    set sid      = #{sid,jdbcType=INTEGER},
+      xid        = #{xid,jdbcType=INTEGER},
+      did        = #{did,jdbcType=INTEGER},
+      answer_one = #{answerOne,jdbcType=VARCHAR},
+      answer_two = #{answerTwo,jdbcType=VARCHAR},
+      `require`  = #{require,jdbcType=VARCHAR},
+      play_url   = #{playUrl,jdbcType=VARCHAR},
+      finish     = #{finish,jdbcType=VARCHAR},
+      grade      = #{grade,jdbcType=INTEGER},
+      evaluate   = #{evaluate,jdbcType=VARCHAR},
+      message    = #{message,jdbcType=VARCHAR},
+      flag       = #{flag,jdbcType=VARCHAR}
+    where oid = #{oid,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectOrderFormByCondition" resultMap="Cascade">
+    SELECT
+    o.oid,
+    o.sid,
+    o.xid,
+    o.did,
+    o.message,
+    o.flag,
+    du.name AS du_name,
+    mu.name AS mu_name,
+    d.name AS d_name,
+    d.price AS d_price,
+    d.content AS d_content,
+    i.early_time AS i_early_time,
+    i.late_time AS i_late_time
+    FROM
+    ((((order_form o LEFT JOIN user du ON o.sid = du.uid)
+    LEFT JOIN user mu ON o.xid = mu.uid)
+    LEFT JOIN designation d ON o.did = d.did)
+    LEFT JOIN inventory i ON o.did = i.did)
+    <where>
+      <if test="sid != null">
+        o.sid = #{sid}
+      </if>
+      <if test="xid != null">
+        AND o.xid = #{xid}
+      </if>
+      <if test="did != null">
+        AND o.did = #{did}
+      </if>
+      <if test="finish != null">
+        AND o.finish = #{finish}
+      </if>
+      <if test="message != null">
+        AND o.message = #{message}
+      </if>
+      <if test="flag != null">
+        AND o.flag = #{flag}
+      </if>
+    </where>
+    ORDER BY i.receive_time ASC, o.oid ASC
+  </select>
+
+  <!--根据施主id和被指定与否以及回复是否为空字符串查询所有满足条件的订单信息-->
+  <select id="selectOrderFormBySIdAndMessageAndFlag" resultMap="Cascade">
+    SELECT
+    o.oid,
+    o.sid,
+    o.xid,
+    o.did,
+    o.message,
+    o.flag,
+    du.name AS du_name,
+    mu.name AS mu_name,
+    d.name AS d_name,
+    d.price AS d_price,
+    d.content AS d_content,
+    i.early_time AS i_early_time,
+    i.late_time AS i_late_time
+    FROM
+    ((((order_form o LEFT JOIN user du ON o.sid = du.uid)
+    LEFT JOIN user mu ON o.xid = mu.uid)
+    LEFT JOIN designation d ON o.did = d.did)
+    LEFT JOIN inventory i ON o.did = i.did)
+    <where>
+      o.sid = #{sid}
+      AND o.message = ''
+      AND o.flag = 'Y'
+      OR o.flag = 'N'
+    </where>
+    ORDER BY i.receive_time ASC, o.oid ASC
+  </select>
+</mapper>

@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.buddhist.user.mapper.InventoryMapper">
+  <resultMap id="BaseResultMap" type="com.buddhist.user.model.Inventory">
+    <id column="iid" jdbcType="INTEGER" property="iid"/>
+    <result column="uid" jdbcType="INTEGER" property="uid"/>
+    <result column="did" jdbcType="INTEGER" property="did"/>
+    <result column="content" jdbcType="VARCHAR" property="content"/>
+    <result column="assign" jdbcType="VARCHAR" property="assign"/>
+    <result column="place" jdbcType="VARCHAR" property="place"/>
+    <result column="early_time" jdbcType="TIMESTAMP" property="earlyTime"/>
+    <result column="late_time" jdbcType="TIMESTAMP" property="lateTime"/>
+    <result column="receive" jdbcType="VARCHAR" property="receive"/>
+    <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime"/>
+    <result column="receive_time" jdbcType="TIMESTAMP" property="receiveTime"/>
+    <result column="confirm_time" jdbcType="TIMESTAMP" property="confirmTime"/>
+    <result column="flag" jdbcType="VARCHAR" property="flag"/>
+  </resultMap>
+  <!--清单信息对应佛事，佛事对应的分类进行级联查询-->
+  <resultMap id="Cascade" type="com.buddhist.user.model.Inventory" extends="BaseResultMap">
+    <association property="designation" javaType="com.buddhist.user.model.Designation">
+      <result column="d_cid" jdbcType="INTEGER" property="cid"/>
+      <result column="d_name" jdbcType="VARCHAR" property="name"/>
+      <result column="d_content" jdbcType="VARCHAR" property="content"/>
+      <result column="d_price" jdbcType="DECIMAL" property="price"/>
+      <result column="d_flag" jdbcType="VARCHAR" property="flag"/>
+
+      <!--佛事内容与佛事分类关联-->
+      <association property="classify" javaType="com.buddhist.user.model.Classify">
+        <result column="c_type_one" jdbcType="VARCHAR" property="typeOne"/>
+        <result column="c_name" jdbcType="VARCHAR" property="name"/>
+        <result column="c_content" jdbcType="VARCHAR" property="content"/>
+        <result column="c_flag" jdbcType="VARCHAR" property="flag"/>
+      </association>
+    </association>
+
+    <!--清单信息与用户关联-->
+    <association property="user" javaType="com.buddhist.user.model.User">
+      <result column="u_name" jdbcType="VARCHAR" property="name"/>
+      <result column="u_password" jdbcType="VARCHAR" property="password"/>
+      <result column="u_phone" jdbcType="VARCHAR" property="phone"/>
+      <result column="u_sex" jdbcType="VARCHAR" property="sex"/>
+      <result column="u_id_card" jdbcType="VARCHAR" property="idCard"/>
+      <result column="u_r_time" jdbcType="TIMESTAMP" property="rTime"/>
+      <result column="u_identify" jdbcType="VARCHAR" property="identify"/>
+      <result column="u_accept_ords" jdbcType="INTEGER" property="acceptOrds"/>
+      <result column="u_grade" jdbcType="INTEGER" property="grade"/>
+      <result column="u_accept_money" jdbcType="DECIMAL" property="acceptMoney"/>
+      <result column="u_donation_ords" jdbcType="INTEGER" property="donationOrds"/>
+      <result column="u_donation_money" jdbcType="DECIMAL" property="donationMoney"/>
+      <result column="u_flag" jdbcType="VARCHAR" property="flag"/>
+    </association>
+  </resultMap>
+
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    iid, uid, did, content, assign, place, early_time, late_time, receive, publish_time,
+    receive_time, confirm_time, flag
+  </sql>
+  <select id="selectByExample" parameterType="com.buddhist.user.model.InventoryExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List"/>
+    from inventory
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from inventory
+    where iid = #{iid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from inventory
+    where iid = #{iid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.buddhist.user.model.InventoryExample">
+    delete from inventory
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.buddhist.user.model.Inventory" useGeneratedKeys="true" keyProperty="iid">
+    insert into inventory (iid, uid, did,
+                           content, assign, place,
+                           early_time, late_time, receive,
+                           publish_time, receive_time, confirm_time,
+                           flag)
+    values (#{iid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{did,jdbcType=INTEGER},
+                                     #{content,jdbcType=VARCHAR}, #{assign,jdbcType=VARCHAR}, #{place,jdbcType=VARCHAR},
+                                     #{earlyTime,jdbcType=TIMESTAMP}, #{lateTime,jdbcType=TIMESTAMP},
+                                     #{receive,jdbcType=VARCHAR},
+                                     #{publishTime,jdbcType=TIMESTAMP}, #{receiveTime,jdbcType=TIMESTAMP},
+            #{confirmTime,jdbcType=TIMESTAMP},
+            #{flag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.buddhist.user.model.Inventory">
+    insert into inventory
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="iid != null">
+        iid,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="did != null">
+        did,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="assign != null">
+        assign,
+      </if>
+      <if test="place != null">
+        place,
+      </if>
+      <if test="earlyTime != null">
+        early_time,
+      </if>
+      <if test="lateTime != null">
+        late_time,
+      </if>
+      <if test="receive != null">
+        receive,
+      </if>
+      <if test="publishTime != null">
+        publish_time,
+      </if>
+      <if test="receiveTime != null">
+        receive_time,
+      </if>
+      <if test="confirmTime != null">
+        confirm_time,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="iid != null">
+        #{iid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="did != null">
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="assign != null">
+        #{assign,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null">
+        #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="earlyTime != null">
+        #{earlyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lateTime != null">
+        #{lateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receive != null">
+        #{receive,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null">
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveTime != null">
+        #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="confirmTime != null">
+        #{confirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.buddhist.user.model.InventoryExample" resultType="java.lang.Long">
+    select count(*) from inventory
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update inventory
+    <set>
+      <if test="record.iid != null">
+        iid = #{record.iid,jdbcType=INTEGER},
+      </if>
+      <if test="record.uid != null">
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.did != null">
+        did = #{record.did,jdbcType=INTEGER},
+      </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.assign != null">
+        assign = #{record.assign,jdbcType=VARCHAR},
+      </if>
+      <if test="record.place != null">
+        place = #{record.place,jdbcType=VARCHAR},
+      </if>
+      <if test="record.earlyTime != null">
+        early_time = #{record.earlyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lateTime != null">
+        late_time = #{record.lateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.receive != null">
+        receive = #{record.receive,jdbcType=VARCHAR},
+      </if>
+      <if test="record.publishTime != null">
+        publish_time = #{record.publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.receiveTime != null">
+        receive_time = #{record.receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.confirmTime != null">
+        confirm_time = #{record.confirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.flag != null">
+        flag = #{record.flag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update inventory
+    set iid = #{record.iid,jdbcType=INTEGER},
+    uid = #{record.uid,jdbcType=INTEGER},
+    did = #{record.did,jdbcType=INTEGER},
+    content = #{record.content,jdbcType=VARCHAR},
+    assign = #{record.assign,jdbcType=VARCHAR},
+    place = #{record.place,jdbcType=VARCHAR},
+    early_time = #{record.earlyTime,jdbcType=TIMESTAMP},
+    late_time = #{record.lateTime,jdbcType=TIMESTAMP},
+    receive = #{record.receive,jdbcType=VARCHAR},
+    publish_time = #{record.publishTime,jdbcType=TIMESTAMP},
+    receive_time = #{record.receiveTime,jdbcType=TIMESTAMP},
+    confirm_time = #{record.confirmTime,jdbcType=TIMESTAMP},
+    flag = #{record.flag,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.buddhist.user.model.Inventory">
+    update inventory
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="did != null">
+        did = #{did,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="assign != null">
+        assign = #{assign,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null">
+        place = #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="earlyTime != null">
+        early_time = #{earlyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lateTime != null">
+        late_time = #{lateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receive != null">
+        receive = #{receive,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null">
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveTime != null">
+        receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="confirmTime != null">
+        confirm_time = #{confirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where iid = #{iid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.buddhist.user.model.Inventory">
+    update inventory
+    set uid        = #{uid,jdbcType=INTEGER},
+      did          = #{did,jdbcType=INTEGER},
+      content      = #{content,jdbcType=VARCHAR},
+      assign       = #{assign,jdbcType=VARCHAR},
+      place        = #{place,jdbcType=VARCHAR},
+      early_time   = #{earlyTime,jdbcType=TIMESTAMP},
+      late_time    = #{lateTime,jdbcType=TIMESTAMP},
+      receive      = #{receive,jdbcType=VARCHAR},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+      confirm_time = #{confirmTime,jdbcType=TIMESTAMP},
+      flag         = #{flag,jdbcType=VARCHAR}
+    where iid = #{iid,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectInventoryByCondition" resultMap="Cascade">
+    SELECT
+    d.name AS d_name,
+    d.content AS d_content,
+    d.price AS d_price,
+    i.iid,
+    i.uid,
+    i.receive,
+    i.publish_time,
+    i.early_time,
+    i.late_time
+    FROM inventory i
+    INNER JOIN designation d
+    ON d.did = i.did
+    <where>
+      <if test="iid != null">
+        i.iid = #{iid}
+      </if>
+      <if test="uid != null">
+        AND i.uid = #{uid}
+      </if>
+      <if test="assign != null">
+        AND i.assign = #{assign}
+      </if>
+      <if test="receive != null">
+        AND i.receive = #{receive}
+      </if>
+    </where>
+    ORDER BY i.early_time ASC, i.iid ASC
+  </select>
+
+  <select id="selectInventoryByIdentifyAndCIdAndReceive" resultMap="Cascade">
+    SELECT
+    d.name AS d_name,
+    d.content AS d_content,
+    d.price AS d_price,
+    i.iid,
+    i.uid,
+    i.publish_time,
+    i.early_time,
+    i.late_time,
+    i.receive
+    FROM ((inventory i INNER JOIN designation d ON d.did = i.did)
+    INNER JOIN user u ON i.uid = u.uid)
+    <where>
+      <if test="identify != null">
+        u.identify = #{identify}
+      </if>
+      <if test="cid != null">
+        AND d.cid = #{cid}
+      </if>
+      <if test="receive != null">
+        AND i.receive = #{receive}
+      </if>
+    </where>
+
+  </select>
+</mapper>

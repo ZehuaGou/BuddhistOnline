@@ -1,0 +1,409 @@
+@charset "utf-8";
+/*顶部栏*/
+.myself-top {
+    background-color: #EEEEEE;
+    font-size: 30px;
+    padding: 10px 0;
+    text-align: center;
+}
+/*上边距*/
+.my-pc {
+    margin-top: 50px;
+    color: #666;
+}
+/*宽度*/
+.my-pc .container {
+    border: 3px solid #eee;
+    padding: 50px 0 30px 0;
+    width: 97%;
+}
+
+/*左边 我的账户*/
+.left {
+    float: left;
+    font-size: 13px;
+    margin-left: -2px;
+    margin-top: 120px;
+    width: 23%;
+    text-align: center;
+}
+body .left table td {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+body .left .my-pa .pan {
+    margin-top: 0;
+}
+
+/*左边结束*/
+
+/*右边表格*/
+body .my-pc .container .right {
+    float: right;
+    border: 2px solid #eee;
+    width: 70%;
+    margin: 0 -2px 0 0;
+}
+/*右最上左*/
+.t-top-left {
+    float: left;
+    width: 50%;
+    text-align: center;
+    border-right: 1px solid #999;
+}
+/*头像图片*/
+.t-top-left img {
+    border-radius: 50%;
+    margin: 10% 0 0 0;
+    width: 30%;
+    height: 30%;
+}
+/*昵称*/
+.t-top-left p {
+    margin-top: 3%;
+    font-size: 15px;
+
+}
+/*手机号*/
+.t-top-right {
+    font-size: 14px;
+    float: right;
+    width: 50%;
+
+    text-align: center;
+    margin-top: 10%;
+}
+
+/*用户名栏*/
+.t-bottom {
+    background-color: rgba(235,244,252);
+    text-align: center;
+    color: #999;
+    margin-top: 8px;
+}
+.t-bottom .row {
+    margin: 0;
+    padding: 0;
+}
+/*用户名*/
+.t-bottom .ro-name {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+/*下表格*/
+.right-center {
+    background-color: rgba(245,245,244);
+
+}
+/*我的订单*/
+.right-center p {
+    text-align: center;
+    font-size: 20px;
+    padding: 10px 0 0px 0;
+}
+/*表格字体*/
+.right-center tr {
+    font-size: 12px;
+}
+/*翻页按钮*/
+.ann{
+    text-align: center;
+}
+.ann-btn {
+    margin: 0;
+    font-size: 6px;
+}
+
+.right-bottom {
+    background-color: rgba(245,245,244);
+    margin-top: 10px;
+}
+/*历史订单*/
+.right-bottom p {
+    text-align: left;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+/*历史订单下*/
+.r-b-div {
+    border-top: 2px solid #E1BC29;
+    padding: 10px 5px;
+    font-size: 16px;
+}
+
+
+/*信息修改页面*/
+.right .register-p {
+    font-size: 25px;
+    margin-top: 20px;
+}
+.register-form label {
+    font-size: 18px;
+
+}
+.re-input input {
+    font-size: 16px;
+    padding: 10px;
+}
+.register-btn {
+    font-size: 20px;
+}
+
+/*小屏幕（平板，大于等于768px）*/
+@media (min-width: 768px) {
+    /*上边距*/
+    .my-pc {
+        margin-top: 80px;
+    }
+    /*左边 我的账户*/
+    .left {
+        font-size: 16px;
+        width: 20%;
+    }
+    /*头像图片*/
+    .t-top-left img {
+        margin: 10% 0 0 0;
+        width: 20%;
+        height: 20%;
+    }
+    /*昵称*/
+    .t-top-left p {
+        margin-top: 2%;
+        font-size: 17px;
+
+    }
+    /*手机号*/
+    .t-top-right {
+        font-size: 18px;
+        margin-top: 8%;
+    }
+    /*用户名*/
+    .t-bottom .ro-name {
+        font-size: 15px;
+    }
+    /*我的订单*/
+    .right-center p {
+        font-size: 23px;
+        padding: 20px 0 0px 0;
+    }
+    /*表格字体*/
+    .right-center tr {
+        font-size: 18px;
+    }
+    /*翻页按钮*/
+    .ann{
+        text-align: center;
+    }
+    .ann-btn {
+        margin: 0;
+        font-size: 12px;
+    }
+    /*历史订单*/
+    .right-bottom p {
+        font-size: 23px;
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+    /*历史订单下*/
+    .r-b-div {
+        padding: 10px 5px;
+        font-size: 18px;
+    }
+
+    /*信息修改页面*/
+    .right .register-p {
+        font-size: 30px;
+        margin-top: 20px;
+    }
+    .register-form label {
+        font-size: 22px;
+
+    }
+    .re-input input {
+        font-size: 18px;
+        padding: 19px 0 19px 10px;
+    }
+    .register-btn {
+        font-size: 20px;
+    }
+
+}
+
+/*中等屏幕（桌面显示器，大于等于992px）*/
+@media (min-width: 992px ) {
+    /*宽度*/
+    .my-pc .container {
+        border: 3px solid #eee;
+        width: 80%;
+    }
+    /*上边距*/
+    .my-pc {
+        margin-top: 90px;
+    }
+    /*左边 我的账户*/
+    .left {
+        font-size: 17px;
+        width: 18%;
+        margin-top: 150px;
+    }
+    /*头像图片*/
+    .t-top-left img {
+        margin: 8% 0 0 0;
+        width: 20%;
+        height: 20%;
+    }
+    /*昵称*/
+    .t-top-left p {
+        margin-top: 3%;
+        font-size: 18px;
+
+    }
+    /*手机号*/
+    .t-top-right {
+        font-size: 18px;
+        margin-top: 8%;
+    }
+    /*用户名*/
+    .t-bottom .ro-name {
+        font-size: 16px;
+    }
+    /*我的订单*/
+    .right-center p {
+        font-size: 24px;
+        padding: 20px 0 10px 0;
+    }
+    /*表格字体*/
+    .right-center tr {
+        font-size: 18px;
+    }
+    /*翻页按钮*/
+    .ann{
+        text-align: center;
+    }
+    .ann-btn {
+        margin: 0;
+        font-size: 15px;
+    }
+    /*历史订单*/
+    .right-bottom p {
+        font-size: 24px;
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+    /*历史订单下*/
+    .r-b-div {
+        padding: 10px 5px;
+        font-size: 18px;
+    }
+
+    /*信息修改页面*/
+    .right .register-p {
+        font-size: 35px;
+        margin-top: 20px;
+    }
+    .register-form label {
+        font-size: 24px;
+
+    }
+    .re-input input {
+        font-size: 18px;
+        padding: 19px 0 19px 10px;
+    }
+    .register-btn {
+        font-size: 23px;
+    }
+
+}
+
+/*大屏幕（大桌面显示器，大于等于1200px）*/
+@media (min-width: 1200px){
+    /*宽度*/
+    .my-pc .container {
+        border: 3px solid #eee;
+        width: 70%;
+    }
+    /*右边表格宽度*/
+    .right {
+        width: 73%;
+    }
+    /*上边距*/
+    .my-pc {
+        margin-top: 120px;
+    }
+    /*左边 我的账户*/
+    .left {
+        font-size: 17px;
+        width: 15%;
+        margin-top: 170px;
+    }
+    /*头像图片*/
+    .t-top-left img {
+        margin: 6% 0 0 0;
+        width: 20%;
+        height: 20%;
+    }
+    /*昵称*/
+    .t-top-left p {
+        margin-top: 2%;
+        font-size: 20px;
+
+    }
+    /*手机号*/
+    .t-top-right {
+        font-size: 18px;
+        margin-top: 6%;
+    }
+    /*用户名*/
+    .t-bottom .ro-name {
+        font-size: 18px;
+    }
+    /*我的订单*/
+    .right-center p {
+        font-size: 26px;
+        padding: 20px 0 10px 0;
+    }
+    /*表格字体*/
+    .right-center tr {
+        font-size: 20px;
+    }
+    /*翻页按钮*/
+    .ann{
+        text-align: center;
+    }
+    .ann-btn {
+        margin: 0;
+        font-size: 15px;
+    }
+    /*历史订单*/
+    .right-bottom p {
+        font-size: 26px;
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+    /*历史订单下*/
+    .r-b-div {
+        padding: 10px 5px;
+        font-size: 20px;
+    }
+
+    /*信息修改页面*/
+    .right .register-p {
+        font-size: 38px;
+        margin-top: 20px;
+    }
+    .register-form label {
+        font-size: 26px;
+
+    }
+    .re-input input {
+        font-size: 20px;
+        padding: 20px 0 20px 10px;
+    }
+    .register-btn {
+        font-size: 23px;
+    }
+}

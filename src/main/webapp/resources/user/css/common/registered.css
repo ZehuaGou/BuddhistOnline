@@ -1,0 +1,188 @@
+@charset "utf-8";
+
+
+/*身体部分*/
+.register .small-jumbotron {
+    width: 100%;
+    background-color: #fff;
+    margin: 0 auto;
+    padding-left: 15%;
+}
+
+.register {
+    margin-top: -20px;
+    background: url(../../images/register-background.jpg) no-repeat;
+    background-size: 100% 220%;
+}
+
+
+/*会员注册*/
+.register .register-p {
+
+    margin-left: 10%;
+    font-size: 30px;
+    font-family: "华文彩云", serif;
+    color: #F36D00;
+}
+/*表单字体（密码等）*/
+.lab {
+    font-size: 16px;
+
+}
+/*表单字体对应框（密码等）*/
+div.re-col {
+    width: 90%;
+    font-size: 15px;
+
+}
+/*单选框*/
+.container .form-group .re-col2 {
+    margin-top: -20px;
+}
+/**/
+#re-div {
+    width: 80%;
+    margin:10px auto;
+    padding-top: 30px;
+}
+/*注册按钮*/
+.register-btn {
+    width: 100%;
+    font-size: 20px;
+    margin-left: -7%;
+}
+/*注册按钮下面*/
+.tishi {
+    font-size: 15px;
+    margin-left: -7%;
+
+}
+
+
+
+/*小屏幕（平板，大于等于768px）*/
+@media (min-width: 768px) {
+    /*身体宽度*/
+    .register .small-jumbotron {
+        width: 80%;
+        padding-left: 10%;
+    }
+    .re-col {
+        width: 80%;
+    }
+    /*会员注册*/
+    .register .register-p {
+        font-size: 40px;
+
+    }
+    /*表单字体（密码等）*/
+    .lab {
+        font-size: 20px;
+
+    }
+    /*表单字体对应框（密码等）*/
+    .re-col {
+        width: 90%;
+        font-size: 15px;
+    }
+    /*单选框*/
+    .container .form-group .re-col2 {
+        margin-top: 0;
+    }
+
+
+}
+
+/*中等屏幕（桌面显示器，大于等于992px）*/
+@media (min-width: 992px ) {
+    /*身体宽度*/
+    .register .small-jumbotron {
+        width: 70%;
+        padding-left: 12%;
+    }
+    .re-col {
+        width: 90%;
+    }
+    /*会员注册*/
+    .register .register-p {
+        font-size: 40px;
+        margin-left: 17%;
+    }
+    /*表单字体（密码等）*/
+    .lab {
+        font-size: 25px;
+
+    }
+    /*表单字体对应框（密码等）*/
+    body .form-horizontal .re-col {
+        width: 90%;
+        font-size: 20px;
+        margin-top: 8px;
+    }
+    /*单选框*/
+    .container .form-group .re-col2 {
+        margin-top: 0;
+    }
+    /*单选*/
+    .container .form-group .re-col2 {
+        font-size: 17px;
+    }
+    /*注册按钮*/
+    .register-btn {
+        width: 100%;
+        font-size: 25px;
+        margin-left: 5%;
+    }
+    /*注册按钮下面*/
+    .tishi {
+        font-size: 18px;
+        margin-left: 5%;
+    }
+}
+
+/*大屏幕（大桌面显示器，大于等于1200px）*/
+@media (min-width: 1200px){
+
+    /*身体宽度*/
+    .register .small-jumbotron {
+        width: 65%;
+        padding-left: 0;
+    }
+    .re-col {
+        width: 100%;
+    }
+    /*会员注册*/
+    .register .register-p {
+        font-size: 40px;
+
+    }
+    /*表单字体（密码等）*/
+    .lab {
+        font-size: 25px;
+
+    }
+    /*表单字体对应框（密码等）*/
+    body .form-horizontal .re-col {
+        width: 90%;
+        font-size: 20px;
+        margin-top: 8px;
+    }
+    /*单选框*/
+    .container .form-group .re-col2 {
+        margin-top: 0;
+    }
+    /*单选*/
+    .container .form-group .re-col2 {
+        font-size: 17px;
+    }
+    /*注册按钮*/
+    .register-btn {
+        width: 100%;
+        font-size: 25px;
+    }
+    /*注册按钮下面*/
+    .tishi {
+        font-size: 18px;
+
+    }
+}

@@ -1,0 +1,246 @@
+@charset "utf-8";
+
+/*顶部开始*/
+/*有因有缘*/
+.cargo-top {
+    margin-top: -20px;
+    font-family: "楷体", serif;
+    color: #EEEEEE;
+    text-align: center;
+    background: url(../../images/cargo-top.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+/*头标题*/
+.cargo-top .lg-title {
+    font-size: 18px;
+}
+
+.cargo-top .sm-title {
+    font-size: 14px;
+}
+
+/*顶部结束*/
+
+/*身体开始*/
+.cargo-body {
+    background: url(../../images/register-background.jpg) no-repeat;
+    background-size: 500% 300%;
+}
+
+/*上标题  全部商品*/
+.ca-by-top {
+    background-color: rgba(20, 8, 0);
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+/*文字区*/
+.cargo-row {
+    padding-top: 50px;
+}
+
+.cargo-row img {
+    padding: 0 10px 0 10px;
+}
+
+.col-world {
+    margin-top: 30px;
+    font-size: 11px;
+    padding-bottom: 25px;
+}
+
+/*信息*/
+.container .col-world .xinxi {
+    padding-left: 0;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    margin-left: 0;
+}
+
+/*按钮*/
+body .ca-button {
+    width: 60%;
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 15px;
+    margin-top: 13px;
+    margin-left: 20%;
+}
+
+/*详情*/
+.d-care h3 {
+    font-size: 24px;
+    color: rgba(222, 166, 53);
+}
+
+div.d-care p {
+    font-size: 18px;
+    color: rgba(222, 166, 53);
+}
+
+.ca-money {
+    color: blue;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.ca-input {
+    width: 12%;
+}
+
+@media (min-width: 300px) {
+    .cargo-body {
+        background: url(../../images/register-background.jpg) no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .col-world {
+        margin-top: 30px;
+        font-size: 14px;
+        padding-bottom: 25px;
+    }
+
+    .container .col-world .xinxi {
+        padding-left: 0;
+        padding-bottom: 5px;
+        padding-right: 0;
+        margin-left: 0;
+    }
+
+    /*信息*/
+    .container .col-world .xinxi {
+        padding-left: 0;
+        padding-bottom: 5px;
+        padding-right: 10px;
+        margin-left: 0;
+    }
+
+    body .ca-button {
+        width: 50%;
+        padding-left: 0;
+        padding-right: 0;
+        font-size: 15px;
+        margin-top: 20px;
+        margin-left: 20%;
+    }
+}
+
+/*小屏幕（平板，大于等于768px）*/
+@media (min-width: 768px) {
+    .cargo-body {
+        background: url(../../images/register-background.jpg) no-repeat;
+        background-size: 100% 100%;
+    }
+
+    /*头标题*/
+    .cargo-top .lg-title {
+        font-size: 20px;
+    }
+
+    .cargo-top .sm-title {
+        font-size: 16px;
+    }
+
+    /*上标题  全部商品*/
+    .ca-by-top {
+        font-size: 20px;
+        padding-left: 5%;
+    }
+
+    .cargo-row img {
+        padding: 30px 10px 0 10px;
+
+    }
+
+    .col-world {
+        margin-top: 0;
+        font-size: 15px;
+    }
+
+    /*按钮*/
+    body .ca-button {
+        width: 50%;
+        padding-left: 0;
+        padding-right: 0;
+        font-size: 15px;
+        margin-top: 20px;
+        margin-left: 0;
+    }
+}
+
+/*中等屏幕（桌面显示器，大于等于992px）*/
+@media (min-width: 992px ) {
+    .cargo-body {
+        background: url(../../images/register-background.jpg) no-repeat;
+        background-size: 100% 100%;
+    }
+
+    /*头标题*/
+    .cargo-top .lg-title {
+        font-size: 22px;
+    }
+
+    .cargo-top .sm-title {
+        font-size: 18px;
+    }
+
+    /*上标题  全部商品*/
+    .ca-by-top {
+        font-size: 22px;
+        padding-left: 5%;
+    }
+
+    .cargo-row img {
+        padding: 0 10px 0 10px;
+
+    }
+
+    .col-world {
+        margin-top: 0px;
+        font-size: 16px;
+    }
+
+    /*按钮*/
+    body .ca-button {
+        width: 50%;
+        padding-left: 0;
+        padding-right: 0;
+        font-size: 15px;
+        margin-top: 20px;
+        margin-left: 0;
+    }
+
+}
+
+/*大屏幕（大桌面显示器，大于等于1200px）*/
+@media (min-width: 1200px) {
+    /*头标题*/
+    .cargo-top .lg-title {
+        font-size: 22px;
+    }
+
+    .cargo-top .sm-title {
+        font-size: 18px;
+    }
+
+    /*上标题  全部商品*/
+    .ca-by-top {
+        font-size: 22px;
+        padding-left: 5%;
+    }
+
+    .col-world {
+        font-size: 20px;
+    }
+
+    /*按钮*/
+    body .ca-button {
+        width: 50%;
+        padding-left: 0;
+        padding-right: 0;
+        font-size: 17px;
+        margin: 20px 20px 20px 0;
+    }
+
+}

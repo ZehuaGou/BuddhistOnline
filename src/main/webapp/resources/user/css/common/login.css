@@ -1,0 +1,102 @@
+@charset "utf-8";
+
+/*登录*/
+.register .small-jumbotron {
+    width: 90%;
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+.register {
+    margin-top: -20px;
+    background: url(../../images/register-background.jpg) no-repeat;
+    background-size: 100% 220%;
+}
+
+.register .register-p {
+    margin-left: 10%;
+    font-size: 35px;
+    font-family: "华文彩云", serif;
+    color: #F36D00;
+}
+
+.group span {
+    padding: 0 10px;
+    font-size: 20px;
+}
+
+.group {
+    margin-top: 20px;
+    width: 90%;
+    padding-left: 5%;
+}
+
+/*输入框*/
+.group input {
+
+    padding: 30px 10px;
+    font-size: 20px;
+}
+
+/*按钮*/
+.container .register-btn {
+    width: 80%;
+    margin: 50px 0 0 8%;
+    font-size: 25px;
+}
+
+/*按钮下*/
+.tishi {
+    font-size: 15px;
+    margin: 20px 0 0 8%;
+}
+
+.re-down {
+    background: url(../../images/register-bottom.jpg) no-repeat;
+    color: #ccc;
+
+}
+
+.re-down .container {
+    padding-top: 10px;
+}
+
+.re-down h4 {
+    font-size: 40px;
+    text-align: center;
+}
+
+.re-down .container p {
+    font-size: 30px;
+}
+
+/*小屏幕（平板，大于等于768px）*/
+@media (min-width: 768px) {
+
+}
+
+/*中等屏幕（桌面显示器，大于等于992px）*/
+@media (min-width: 992px ) {
+    /*身体*/
+    .register .small-jumbotron {
+        width: 70%;
+        background-color: #fff;
+        margin: 0 auto;
+    }
+
+    .register .register-p {
+        margin-left: 15%;
+    }
+
+    /*输入框*/
+    .group {
+        margin-top: 20px;
+        width: 90%;
+        padding-left: 5%;
+    }
+}
+
+/*大屏幕（大桌面显示器，大于等于1200px）*/
+@media (min-width: 1200px) {
+
+}

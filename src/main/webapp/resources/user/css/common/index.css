@@ -1,0 +1,259 @@
+@charset "utf-8";
+
+body .bd-container {
+    margin: 0;
+}
+
+/*顶部栏*/
+#myCarousel {
+    margin-top: -20px;
+}
+
+/*顶部字体
+.nav-top {
+	padding: 10px;
+}
+nav .container .top-word {
+	font-size: 30px;
+	font-weight: 600;
+}
+nav .container .top-word2 {
+	font-size: 20px;
+	font-weight: 600;
+}
+*/
+/*翻页按钮*/
+.ann {
+    text-align: center;
+
+}
+
+.ann-btn {
+    margin: 0;
+}
+
+/*轮播图*/
+#myCarousel img {
+    margin: auto;
+}
+
+/*顶部栏结束*/
+
+/*服务提供栏*/
+.tab1 {
+    text-align: center;
+    margin-top: 0px;
+    color: #555;
+}
+
+/*在线佛事字体*/
+.tab1 .container h3 {
+    color: #0000FF;
+    font-size: 30px;
+    padding: 10px 0 0 0;
+}
+
+/*在线佛事下字体*/
+.tab1 .container .tab1-p {
+    color: #666666;
+    margin-top: 18px;
+    font-size: 15px;
+}
+
+/*分类标题*/
+.tab1-title1 {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 600;
+    color: #00507C;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.col {
+    padding: 5px;
+    text-align: left;
+}
+
+/*会贡等标题*/
+.tab1 .container .col h4 {
+
+    font-size: 18px;
+    font-family: "微软雅黑", serif;
+    font-weight: 600;
+}
+
+/*会贡等简介*/
+.tab1 .container .col p {
+
+    font-size: 15px;
+    font-family: "微软雅黑", serif;
+
+}
+
+/*第三类*/
+div .tab1-p2 {
+    text-align: left;
+    font-size: 16px;
+}
+
+.tab1-p2 a {
+    color: rgb(85, 85, 85);;
+}
+
+/*底部导航栏
+.bottom-nav {
+	margin-top: 10px;
+	text-align: center;
+}
+.bottom-nav span {
+	font-size: 20px;
+}
+.bottom-nav p {
+	font-size: 20px;
+	color: #666;
+}
+.bottom-nav-one span,.bottom-nav-one p {
+	color: green;
+}
+*/
+/*底部导航栏结束*/
+
+/*小屏幕（平板，大于等于768px）*/
+@media (min-width: 768px) {
+    /*在线佛事字体*/
+    .tab1 .container h3 {
+        font-size: 40px;
+        padding: 30px 0 0 0;
+    }
+
+    /*在线佛事下字体*/
+    .tab1 .container .tab1-p {
+        margin-top: 18px;
+        font-size: 20px;
+    }
+
+    /*分类标题*/
+    .tab1-title1 {
+        font-size: 30px;
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+
+    .col {
+        padding: 7px;
+    }
+
+    /*会贡等标题*/
+    .tab1 .container .col h4 {
+        font-size: 20px;
+    }
+
+    /*会贡等简介*/
+    .tab1 .container .col p {
+        font-size: 18px;
+    }
+
+    /*第三类*/
+    div .tab1-p2 {
+        font-size: 20px;
+    }
+
+    /*按钮*/
+    .ann-btn {
+        margin: 10px 20px;
+    }
+}
+
+/*中等屏幕（桌面显示器，大于等于992px）*/
+@media (min-width: 992px ) {
+    /*在线佛事字体*/
+    .tab1 .container h3 {
+        font-size: 45px;
+        padding: 30px 0 0 0;
+    }
+
+    /*在线佛事下字体*/
+    .tab1 .container .tab1-p {
+        margin-top: 22px;
+        font-size: 25px;
+    }
+
+    /*分类标题*/
+    .tab1-title1 {
+        font-size: 33px;
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+
+    .col {
+        padding: 10px;
+    }
+
+    /*会贡等标题*/
+    .tab1 .container .col h4 {
+        font-size: 23px;
+    }
+
+    /*会贡等简介*/
+    .tab1 .container .col p {
+        font-size: 21px;
+    }
+
+    /*第三类*/
+    div .tab1-p2 {
+        font-size: 25px;
+    }
+
+    /*按钮*/
+    .ann-btn {
+        margin: 10px 25px;
+    }
+}
+
+/*大屏幕（大桌面显示器，大于等于1200px）*/
+@media (min-width: 1200px) {
+    /*在线佛事字体*/
+    .tab1 .container h3 {
+        font-size: 48px;
+        padding: 30px 0 0 0;
+    }
+
+    /*在线佛事下字体*/
+    .tab1 .container .tab1-p {
+        margin-top: 25px;
+        font-size: 25px;
+    }
+
+    /*分类标题*/
+    .tab1-title1 {
+        font-size: 35px;
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+
+    .col {
+        padding: 17px;
+    }
+
+    /*会贡等标题*/
+    .tab1 .container .col h4 {
+        font-size: 25px;
+    }
+
+    /*会贡等简介*/
+    .tab1 .container .col p {
+        font-size: 23px;
+    }
+
+    /*第三类*/
+    div .tab1-p2 {
+        font-size: 25px;
+    }
+
+    /*按钮*/
+    .ann-btn {
+        margin: 20px 40px;
+    }
+
+}

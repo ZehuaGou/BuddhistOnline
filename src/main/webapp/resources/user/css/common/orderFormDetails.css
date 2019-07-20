@@ -1,0 +1,152 @@
+@charset "utf-8";
+
+/*身体部分*/
+.register .small-jumbotron {
+    width: 95%;
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+.register {
+    margin-top: -20px;
+    background: url(../../images/register-background.jpg) no-repeat;
+    background-size: 100% 220%;
+}
+
+.register .register-p {
+    margin: 0 0 20px 8%;
+    font-size: 25px;
+    font-family: "华文彩云", serif;
+    color: #F36D00;
+}
+
+/*左边字体*/
+.lab {
+    font-size: 16px;
+    text-align: right;
+    padding: 0 2px;
+    margin: 0;
+}
+
+/*右边字体*/
+.re-col {
+    margin-top: 10px;
+    font-size: 16px;
+    padding: 0;
+}
+
+/**/
+#re-div {
+    width: 80%;
+    margin: 10px auto;
+    padding-top: 10px;
+}
+
+.register-btn {
+    width: 100%;
+    font-size: 15px;
+}
+
+@media (min-width: 0px) {
+    .register .small-jumbotron {
+        width: 105%;
+    }
+}
+
+@media (min-width: 300px) {
+    .register .small-jumbotron {
+        width: 96%;
+    }
+}
+
+@media (min-width: 420px) {
+    .register .small-jumbotron {
+        width: 80%;
+    }
+
+    /*标题*/
+    .register .register-p {
+        margin: 0 0 20px 8%;
+        font-size: 27px;
+    }
+
+    /*左边字体*/
+    .lab {
+        font-size: 18px;
+    }
+
+    /*右边字体*/
+    .re-col {
+        font-size: 18px;
+    }
+}
+
+/*小屏幕（平板，大于等于768px）*/
+@media (min-width: 768px) {
+    .register .small-jumbotron {
+        width: 60%;
+    }
+
+    /*标题*/
+    .register .register-p {
+        margin: 0 0 20px 20%;
+        font-size: 30px;
+    }
+
+    /*左边字体*/
+    .lab {
+        font-size: 20px;
+        margin-top: -6px;
+        padding-top: 0;
+    }
+
+    /*右边字体*/
+    body .container .form-group .re-col {
+        font-size: 20px;
+    }
+
+    .register-btn {
+        width: 100%;
+        font-size: 20px;
+    }
+}
+
+/*中等屏幕（桌面显示器，大于等于992px）*/
+@media (min-width: 992px ) {
+    .register .small-jumbotron {
+        width: 50%;
+    }
+
+    /*标题*/
+    .register .register-p {
+        margin: 0 0 20px 25%;
+        font-size: 35px;
+    }
+
+    /*左边字体*/
+    .lab {
+        font-size: 20px;
+        margin-top: -6px;
+        padding-top: 0;
+    }
+
+    /*右边字体*/
+    body .container .form-group .re-col {
+        font-size: 20px;
+    }
+
+    #re-div {
+        padding-top: 20px;
+    }
+
+    .register-btn {
+        width: 100%;
+        font-size: 20px;
+    }
+
+}
+
+/*大屏幕（大桌面显示器，大于等于1200px）*/
+@media (min-width: 1200px) {
+
+}

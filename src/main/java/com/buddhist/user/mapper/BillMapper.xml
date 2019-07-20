@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.buddhist.user.mapper.BillMapper">
+  <resultMap id="BaseResultMap" type="com.buddhist.user.model.Bill">
+    <id column="bid" jdbcType="INTEGER" property="bid"/>
+    <result column="uid" jdbcType="INTEGER" property="uid"/>
+    <result column="oid" jdbcType="INTEGER" property="oid"/>
+    <result column="did" jdbcType="INTEGER" property="did"/>
+    <result column="identify" jdbcType="VARCHAR" property="identify"/>
+    <result column="price" jdbcType="DECIMAL" property="price"/>
+    <result column="reality" jdbcType="DECIMAL" property="reality"/>
+    <result column="explain" jdbcType="VARCHAR" property="explain"/>
+    <result column="flag" jdbcType="VARCHAR" property="flag"/>
+  </resultMap>
+
+  <!--账单信息对应清单信息进行关联-->
+  <resultMap id="Cascade" type="com.buddhist.user.model.Bill" extends="BaseResultMap">
+    <!--账单信息对应清单信息进行关联-->
+    <association property="inventory" javaType="com.buddhist.user.model.Inventory">
+      <id column="i_iid" jdbcType="INTEGER" property="iid"/>
+      <result column="i_uid" jdbcType="INTEGER" property="uid"/>
+      <result column="i_did" jdbcType="INTEGER" property="did"/>
+      <result column="i_content" jdbcType="VARCHAR" property="content"/>
+      <result column="i_assign" jdbcType="VARCHAR" property="assign"/>
+      <result column="i_place" jdbcType="VARCHAR" property="place"/>
+      <result column="i_early_time" jdbcType="TIMESTAMP" property="earlyTime"/>
+      <result column="i_late_time" jdbcType="TIMESTAMP" property="lateTime"/>
+      <result column="i_receive" jdbcType="VARCHAR" property="receive"/>
+      <result column="i_publish_time" jdbcType="TIMESTAMP" property="publishTime"/>
+      <result column="i_receive_time" jdbcType="TIMESTAMP" property="receiveTime"/>
+      <result column="i_confirm_time" jdbcType="TIMESTAMP" property="confirmTime"/>
+      <result column="i_flag" jdbcType="VARCHAR" property="flag"/>
+
+      <association property="designation" javaType="com.buddhist.user.model.Designation">
+        <result column="d_cid" jdbcType="INTEGER" property="cid"/>
+        <result column="d_name" jdbcType="VARCHAR" property="name"/>
+        <result column="d_content" jdbcType="VARCHAR" property="content"/>
+        <result column="price" jdbcType="DECIMAL" property="price"/>
+        <result column="d_flag" jdbcType="VARCHAR" property="flag"/>
+      </association>
+    </association>
+  </resultMap>
+
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    bid, uid, oid, did, identify, price, reality, `explain`, flag
+  </sql>
+  <select id="selectByExample" parameterType="com.buddhist.user.model.BillExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List"/>
+    from bill
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from bill
+    where bid = #{bid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bill
+    where bid = #{bid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.buddhist.user.model.BillExample">
+    delete from bill
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.buddhist.user.model.Bill" useGeneratedKeys="true" keyProperty="bid">
+    insert into bill (bid, uid, oid,
+                      did, identify, price,
+                      reality, `explain`, flag
+    )
+    values (#{bid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{oid,jdbcType=INTEGER},
+            #{did,jdbcType=INTEGER}, #{identify,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL},
+            #{reality,jdbcType=DECIMAL}, #{explain,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}
+    )
+  </insert>
+  <insert id="insertSelective" parameterType="com.buddhist.user.model.Bill">
+    insert into bill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bid != null">
+        bid,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="oid != null">
+        oid,
+      </if>
+      <if test="did != null">
+        did,
+      </if>
+      <if test="identify != null">
+        identify,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="reality != null">
+        reality,
+      </if>
+      <if test="explain != null">
+        `explain`,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bid != null">
+        #{bid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="oid != null">
+        #{oid,jdbcType=INTEGER},
+      </if>
+      <if test="did != null">
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="identify != null">
+        #{identify,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="reality != null">
+        #{reality,jdbcType=DECIMAL},
+      </if>
+      <if test="explain != null">
+        #{explain,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.buddhist.user.model.BillExample" resultType="java.lang.Long">
+    select count(*) from bill
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update bill
+    <set>
+      <if test="record.bid != null">
+        bid = #{record.bid,jdbcType=INTEGER},
+      </if>
+      <if test="record.uid != null">
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.oid != null">
+        oid = #{record.oid,jdbcType=INTEGER},
+      </if>
+      <if test="record.did != null">
+        did = #{record.did,jdbcType=INTEGER},
+      </if>
+      <if test="record.identify != null">
+        identify = #{record.identify,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=DECIMAL},
+      </if>
+      <if test="record.reality != null">
+        reality = #{record.reality,jdbcType=DECIMAL},
+      </if>
+      <if test="record.explain != null">
+        `explain` = #{record.explain,jdbcType=VARCHAR},
+      </if>
+      <if test="record.flag != null">
+        flag = #{record.flag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update bill
+    set bid = #{record.bid,jdbcType=INTEGER},
+    uid = #{record.uid,jdbcType=INTEGER},
+    oid = #{record.oid,jdbcType=INTEGER},
+    did = #{record.did,jdbcType=INTEGER},
+    identify = #{record.identify,jdbcType=VARCHAR},
+    price = #{record.price,jdbcType=DECIMAL},
+    reality = #{record.reality,jdbcType=DECIMAL},
+    `explain` = #{record.explain,jdbcType=VARCHAR},
+    flag = #{record.flag,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.buddhist.user.model.Bill">
+    update bill
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="oid != null">
+        oid = #{oid,jdbcType=INTEGER},
+      </if>
+      <if test="did != null">
+        did = #{did,jdbcType=INTEGER},
+      </if>
+      <if test="identify != null">
+        identify = #{identify,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="reality != null">
+        reality = #{reality,jdbcType=DECIMAL},
+      </if>
+      <if test="explain != null">
+        `explain` = #{explain,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bid = #{bid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.buddhist.user.model.Bill">
+    update bill
+    set uid     = #{uid,jdbcType=INTEGER},
+      oid       = #{oid,jdbcType=INTEGER},
+      did       = #{did,jdbcType=INTEGER},
+      identify  = #{identify,jdbcType=VARCHAR},
+      price     = #{price,jdbcType=DECIMAL},
+      reality   = #{reality,jdbcType=DECIMAL},
+      `explain` = #{explain,jdbcType=VARCHAR},
+      flag      = #{flag,jdbcType=VARCHAR}
+    where bid = #{bid,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectBillByCondition" resultMap="Cascade">
+    SELECT
+    b.bid,
+    b.price,
+    b.reality,
+    b.`explain`,
+    d.name AS d_name,
+    d.content AS d_content,
+    i.confirm_time AS i_confirm_time
+    FROM
+    (((bill b LEFT JOIN inventory i ON b.did = i.did)
+    LEFT JOIN designation d ON d.did = i.did)
+    LEFT JOIN order_form o ON b.oid = o.oid)
+    <where>
+      <if test="uid != null">
+        b.uid = #{uid}
+      </if>
+      <if test="oid != null">
+        AND b.oid = #{oid}
+      </if>
+      <if test="did != null">
+        AND b.did = #{did}
+      </if>
+    </where>
+    ORDER BY i.receive_time DESC, b.bid ASC
+  </select>
+</mapper>
